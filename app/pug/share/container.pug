@@ -1,0 +1,9 @@
+extends ./head.pug
+block append body
+    body
+        include ./header.pug
+        block main
+        include ./footer.pug
+        script(src=jsUrl+"jquery.js")
+        script(src=jsUrl+"base.js")
+        block js

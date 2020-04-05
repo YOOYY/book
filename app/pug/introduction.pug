@@ -1,0 +1,36 @@
+extends ./share/container.pug
+block config
+    - var title = '集团介绍';
+    - var keywords = '集团介绍';
+    - var description = '集团介绍';
+    - var currentId = 'introduction';
+    - var mimgUrl = imgUrl+'introduction/';
+block css
+    link(rel='stylesheet',href=cssUrl + 'introduction.css')
+block append main
+    #introduction
+        .res_banner
+            img.responsive(src=mimgUrl+"bg.jpg", alt="")
+            p 城市的文化新地标!
+        .container
+            h1#vision 集团愿景
+            p 梦想天地以提升中国人的精神气质为己任，努力成为每个城市最重要的未来学习中心、生活进阶场所和文化新地标。
+            h1#belief 企业理念
+            table.iconbox
+                tr
+                    td
+                        img(src=mimgUrl+"icon1.png", alt="")
+                    td
+                        img(src=mimgUrl+"icon2.png", alt="")
+                    td.last
+                        img(src=mimgUrl+"icon3.png", alt="")
+            h1#history 发展历程
+            p.text-align-left 梦想天地作为市场领先的创新综合体运营商和品牌教育（文化）机构集合服务商，受到凯德、金茂、仁恒等中国众多一线商业地产运营商的欢迎与追捧，正在上海、杭州、宁波、扬州、无锡等国内一、二线重要城市的中心位置或高级购物中心内迅速布点。
+            h1 公司环境
+            div.top
+                img.first(src=mimgUrl+"show1.jpg", alt="")
+                img(src=mimgUrl+"show2.jpg", alt="")
+                img(src=mimgUrl+"show3.jpg", alt="")
+            div.bottom
+                img.first(src=mimgUrl+"show4.jpg", alt="")
+                img(src=mimgUrl+"show5.jpg", alt="")

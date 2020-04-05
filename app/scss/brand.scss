@@ -1,0 +1,92 @@
+@import './_config.scss';
+#brand{
+    .navbar{
+        background-color: #fff;
+        box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+    }
+    .nav{
+        width:48.541%;height: 90px;
+        margin: 0 auto;
+        overflow: hidden;
+        li{
+            width: 33.3%;
+            font-size: 26px;
+            text-align: center;
+            line-height: 90px;
+            cursor: pointer;
+        }
+        .active{
+            background: no-repeat bottom center;
+            background-image: url($imgUrl+'line.png');
+            background-size: 50px 4px;
+        }
+    }
+    .margintop120{
+        margin-top: 10%;
+    }
+    h1{
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 4.16%;
+    }
+    p{
+        line-height: 36px;
+        color: #666666;
+    }
+    .top{
+        overflow: hidden;
+        img{
+            float: left;
+            width: 32.5%;
+            margin-left: 1.25%;
+        }
+        .first{
+            margin-left: 0;
+        }
+    }
+    
+    .bottom{
+        margin-top: 1.25%;
+        margin-bottom: 25%;
+        img{
+            width: 40.84%;
+        }
+        .first{
+            margin-right: 1.25%;
+        }
+        .w57{
+            width: 57.91%;
+        }
+    }
+}
+
+@media (max-width: 1125px) {
+    #brand{
+        .nav{
+            width:80%;
+        }
+        .container{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+}
+
+/* 超小屏幕（手机，小于 768px） */
+@media screen and (max-width: 768px){
+    #brand{
+        .nav{
+            width:100%;
+            li{
+                font-size: 16px;
+            }
+        }
+        h1{
+            font-size: 24px;
+        }
+        .container{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}

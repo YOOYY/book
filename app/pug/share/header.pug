@@ -1,0 +1,24 @@
+#header
+    .container
+        a.fl.logo(href=viewUrl+header.logo.href)
+            img.responsive(src=imgUrl+"logo.png")
+        ul.nav
+            each val, index in header.nav
+                li
+                    if val.subnav
+                        div(class={active:currentId === val.pageId}) !{val.text}
+                            ul.subnav
+                                each sval,sindex in val.subnav
+                                    li
+                                        a(href=viewUrl+sval.href)
+                                            |!{sval.text}
+                    else
+                        a(href=viewUrl+val.href class={active:currentId === val.pageId})
+                            |!{val.text}
+        .phone-nav
+            img(src=imgUrl+"phone_nav.png", alt="")
+            ul.subnav
+                each pval,pindex in header.nav
+                    li
+                        a(href=viewUrl+pval.href class={active:currentId === pval.pageId})
+                            |!{pval.text}

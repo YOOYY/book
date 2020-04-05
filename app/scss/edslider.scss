@@ -1,0 +1,84 @@
+@import './_config.scss';
+
+
+.edslider{
+	/*---slide show skin---*/
+	position:relative;
+	max-width: 1920px;
+	margin: 0 auto;
+	overflow:hidden;
+	ul{
+		position:relative;
+	}
+	& > ul{
+		background:#fff;
+		overflow:hidden;
+
+		//----项目代码
+		padding-top: 36.458%;
+		//------
+		li{
+			display:none;
+			width:100%;
+			position:absolute;
+			top:0;
+			left:0;
+			z-index:0;
+			&.current{
+				z-index:1;
+			}
+		}
+	}
+	a{
+		display:block;
+	}
+	/*---controls---*/
+	.navigator{
+		width:1.77083%;
+		bottom: 43%;
+		position: absolute;
+		cursor:pointer;
+		transition: background-color 0.2s;
+		z-index: 2;
+		img{
+			width: 100%;
+		}
+	}
+	.next{
+		right: 3.645%;
+	}
+
+	.prev{
+		left: 3.645%;
+	}
+	// .next:hover,.prev:hover{
+	// 	background-color: rgba(0,0,0,0.6);
+	// }
+	.controls{
+		width: 100%; height: 0;
+		position:absolute;
+		bottom: 6%;
+		z-index:2;
+		.paginator{
+			width: 224px;
+			margin: 0 auto;
+			li{
+				float: left;
+				cursor: pointer;
+				width: 16px; height: 4px;
+				margin: 0 20px;
+				background: #fff;
+				&.current,&:hover{
+					background:rgba(255,255,255,.5);
+				}
+			}
+		}
+	}
+	.progress{
+		position: absolute;
+		top: 0;
+		height:3px;
+		z-index:2;
+		background:rgba(255,255,255,.5);
+	}
+}

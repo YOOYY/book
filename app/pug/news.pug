@@ -1,0 +1,54 @@
+extends ./share/container.pug
+block config
+    - var title = '集团资讯';
+    - var keywords = '集团资讯';
+    - var description = '集团资讯';
+    - var currentId = 'news';
+    - var mimgUrl = imgUrl+'news/';
+    -
+        var nlist = [
+                {title:'无锡重磅，首家知识共享社区梦想天地来了！',date:' 2019-09-26',img:'news1.jpg',des:'在无锡这被互联网高度覆盖的城市，“共享”早就成为了人们生活的日常。除了圈地兴起的彩色单车',href:'news_article.html'}, 
+                {title:'聚焦财税新政，助推企业服务',date:'2019-09-15',img:'news2.jpg',des:'梦想天地《财税及企业管理》培训活动圆满落幕',href:'news.html'}, 
+                {title:'梦想天地2020业务研讨会',date:'2020-01-15',img:'news3.jpg',des:'梦想天地2020业务梦想天地2020业务研讨会梦想天地2020业务研讨会梦想天地',href:'news.html'},
+                {title:'有了它，可以体面的吃蟹',date:'2019-09-08',img:'news4.jpg',des:'马上就要中秋了，又到了螃蟹小可爱们瑟瑟发抖的季节',href:'news.html'}
+            ];
+block css
+    link(rel='stylesheet',href=cssUrl + 'news.css')
+block append main
+    #news
+        .res_banner
+            img.responsive(src=mimgUrl+"banner1.jpg", alt="")
+            p NEWS
+        .container
+            ul.nav
+                li.active
+                    a(href=viewUrl+'news.html') 集团资讯
+                li
+                    i
+                    a(href=viewUrl+'activity.html') 特色活动
+            table.content
+                each nval, nindex in nlist
+                    tr
+                        td.thumb
+                            a(href=nval.href)
+                                img(src=mimgUrl+nval.img)
+                        td.list
+                            a(href=nval.href)
+                                h2.singletext #{nval.title}
+                                p.time #{nval.date}
+                                p.des.singletext #{nval.des}
+            .page_div
+                #page.page
+block append js
+    script.
+        var imgUrl = '#{imgUrl}';
+    script(src=jsUrl+"pageMe.js")
+    script.
+        $("#page").paging({
+            pageNum: 1, // 当前页面
+            totalNum: 7, // 总页码
+            totalList: 56, // 记录总数量
+            callback: function (num) { //回调函数
+                console.log(num);
+            }
+        });

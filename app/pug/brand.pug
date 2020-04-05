@@ -1,0 +1,80 @@
+extends ./share/container.pug
+block config
+    - var title = '品牌';
+    - var keywords = '品牌';
+    - var description = '品牌';
+    - var currentId = 'brand';
+    - var mimgUrl = imgUrl+'brand/';
+block css
+    link(rel='stylesheet',href=cssUrl + 'brand.css')
+block append main
+    #brand
+        .banner_container
+            img.responsive(src=mimgUrl+"banner1.jpg", alt="")
+        .navbar
+            ul.nav
+                li EDUMALL
+                li Dream I Lab
+                li The Library
+        .container.margintop
+            div#edu
+                h1 EDUMALL 简介
+                p EDUMALL是梦想天地旗下成人教育文化品牌主力店，是以文化和精神消费、进阶生活体验为核心的高端集合店。
+                p EDUMALL以富有文化、艺术气息的环境氛围，将丰富的内容资源汇聚于高度场景化的共享教学空间，创造性地将教育、文创、美学、运动、科技以及配套服务等诸多领域内容融为一体，带给人们更多有关“美好生活”需求的创想与可能，以融合、创新、共享的模式，打造一个创新的未来学习中心。
+                h1.margintop120 环境氛围
+                div.top
+                    img.first(src=mimgUrl+"pic1.jpg", alt="")
+                    img(src=mimgUrl+"pic2.jpg", alt="")
+                    img(src=mimgUrl+"pic3.jpg", alt="")
+                div.bottom
+                    img.first(src=mimgUrl+"pic4.jpg", alt="")
+                    img.w57(src=mimgUrl+"pic5.jpg", alt="")
+            div#dream
+                h1 Dream I Lab 简介
+                p DreamiLab梦想实验室是梦想天地旗下少儿教育品牌主力店，是以少儿全科及素质教育为核心的一站式教育集合店。
+                p DreamiLab梦想实验室借鉴百货店这一经典现代商业模式，为众多教育项目集中引流、为其服务品质和信誉背书，跨界改造教育产品的销售流通格局，实现少儿培训的全品类、多品牌集成，同时辅以教育场所品位和体验感的全面提升，融合配套服务业态，打造少儿健康、快乐、优能成长的未来学习中心。
+                h1.margintop120 环境氛围
+                div.top
+                    img.first(src=mimgUrl+"pic6.jpg", alt="")
+                    img(src=mimgUrl+"pic7.jpg", alt="")
+                    img(src=mimgUrl+"pic8.jpg", alt="")
+                div.bottom
+                    img.first.w57(src=mimgUrl+"pic9.jpg", alt="")
+                    img(src=mimgUrl+"pic10.jpg", alt="")
+            div#library
+                h1 The Library 简介
+                p The Library是以集学习、社交、分享于一体的新型图书馆，实现线上和实体店相融合的社交平台，是以精神交流和知识分享为引领的文化消费和体验中心。
+                p 区别于传统图书馆， The Library通过多方的参与来构建一个城市学人（包括驻地和当地籍的学人）精神的家园。从一个单纯的阅读、书籍检索借阅场所，演变为一个开放的学习交流中心。
+                h1.margintop120 环境氛围
+                div.top
+                    img.first(src=mimgUrl+"pic11.jpg", alt="")
+                    img(src=mimgUrl+"pic12.jpg", alt="")
+                    img(src=mimgUrl+"pic13.jpg", alt="")
+                div.bottom
+                    img.first.w57(src=mimgUrl+"pic14.jpg", alt="")
+                    img(src=mimgUrl+"pic15.jpg", alt="")
+block append js
+    script.
+        $(function(){
+            $('#brand .nav li').click(function(){
+                var index = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                $('#brand .container>div').eq(index).show().siblings().hide();
+                $('#brand .responsive').attr('src',"#{mimgUrl}banner"+ (index+1) +".jpg");
+            })
+            var index = GetQueryString("index");
+            switch(index){
+                case "edu":
+                    index = 0;
+                    break;
+                case "dream":
+                    index = 1;
+                    break;
+                case "library":
+                    index = 2;
+                    break;
+                default:
+                    index = 0;
+            }
+            $('#brand .nav li').eq(index).click();
+        })

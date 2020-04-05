@@ -1,0 +1,59 @@
+extends ./share/container.pug
+block config
+    - var title = '特色活动';
+    - var keywords = '特色活动';
+    - var description = '特色活动';
+    - var currentId = 'news';
+    - var mimgUrl = imgUrl+'news/';
+    -
+        var list = [
+                {title:'无锡重磅，首家知识共享社区梦想天地来了！',date:'2020.09',day:'26',des:'在无锡这被互联网高度覆盖的城市，“共享”早就成为了人们生活的日常。除了圈地兴起的彩色', href:'news_article.html'}, 
+                {title:'Hello，欢迎来到无锡梦想天地',date:'2019.09',day:'23',des:'梦想天地《财税及企业管理》培训活动圆满落幕梦想天地《财税及企业管理》培训活动', href:'activity_article1.html'}, 
+                {title:'无锡梦想天地开展扫黑除恶专项斗争专题学习会',date:'2019.05',day:'27',des:'为深入贯彻落实习近平总书记关于扫黑除恶的重要 指示精神和中央、省委、市委、区委关于开展', href:'activity_article2.html'},
+                {title:'在寒冷的冬夜，给爱人和自己煮一杯热红酒',date:'2019.12',day:'20',des:'热红酒，估计是冬季最潮流的饮品了。这种起源于欧 洲的饮品，让人体验到新奇，也感', href:'activity_article3.html'},
+                {title:"不忘初心，Jolpa'餐厅两周年",date:'2019.09',day:'27',des:'在无锡这被互联网高度覆盖的城市，“共享”早就成 为了人们生活的日常。除了圈地兴起的彩色', href:'activity_article4.html'},
+                {title:"将平淡无奇的一天变成无可替代的回忆",date:'2019.09',day:'12',des:'金九银十，Edumall全面发力，在刚刚过去的一周里， 我们这里举办了丰富多彩的活动', href:'activity.html'},
+            ];
+block css
+    link(rel='stylesheet',href=cssUrl + 'news.css')
+block append main
+    #activity
+        .res_banner
+            img.responsive(src=mimgUrl+"banner2.jpg", alt="")
+            p 媒体中心
+        .container
+            ul.nav
+                li
+                    a(href=viewUrl+'news.html') 集团资讯
+                li.active
+                    i
+                    a(href=viewUrl+'activity.html') 特色活动
+            ul.newslist.clearfix
+                each val, index in list
+                    li(class=index%2==1?'mr0':'')
+                        a(href=viewUrl+val.href)
+                            img.responsive(src=`${mimgUrl}panel${index+1}.jpg`, alt="")
+                            .text
+                                .time
+                                    .day #{val.day}
+                                    .line
+                                    .year #{val.date}
+                                .list
+                                    h2.title #{val.title}
+                                    .des #{val.des}
+                                    .more(href=viewUrl+val.href) #[i(class='icon')]查看详情
+            .page_div
+                #page.page
+block append js
+    script.
+        var imgUrl = '#{imgUrl}';
+    script(src=jsUrl+"pageMe.js")
+    script.
+        $("#page").paging({
+            pageNum: 1, // 当前页面
+            totalNum: 7, // 总页码
+            totalList: 56, // 记录总数量
+            callback: function (num) { //回调函数
+                console.log(num);
+            }
+        });

@@ -1,0 +1,31 @@
+extends ./share/container.pug
+block config
+    - var title = '企业资讯';
+    - var keywords = '企业资讯';
+    - var description = '企业资讯';
+    - var currentId = 'news';
+    - var mimgUrl = imgUrl+'news/';
+block css
+    link(rel='stylesheet',href=cssUrl + 'news.css')
+block append main
+    #activity_article
+        .res_banner
+            img.responsive(src=mimgUrl+"banner2.jpg", alt="")
+            p Hello，欢迎来到无锡梦想天地
+        .container
+            h1 Hello，欢迎来到无锡梦想天地
+            p.time 2019.09.23
+            .content
+                p 知识进阶生活，你的品质人生2.0正在启动 ……
+                p 古人言，三人行，必有我师焉，每个人都可以是一所学校，教你所想，学你所需。#[br]共享时代，独乐乐不如众乐乐，全内容搭载平台、知识共享空间- EDU MALL梦想天地，于2019年无锡横空上线，作为线下全新知识共享空间，EDU MALL秉承“好玩、有趣”的教学理念，从艺术、人文、历史到娱乐，多样化内容一站触达，并源源不断地引进趣味课程，为你开启深度学习模式，完成优越人生的华丽升级。
+                p 这个十月，EDU MALL  梦想天地，就在无锡人民路86号等你#[br]分享见识，学习技能，来EDU MALL梦想天地，向品质人生2.0发车！
+                div
+                    img(src=mimgUrl+"article1.jpg", alt="")
+                    img(src=mimgUrl+"article2.jpg", alt="")
+                    img.mr0(src=mimgUrl+"article3.jpg", alt="")
+                p 共享知识空间，全内容搭载平台，知识买手店#[br]作为全新的线下知识平台，EDUMALL集合各类“好玩，好用”的知识内容与体验，提供包罗世界文明、传统文化、时尚潮流、人文情怀、生活格调等诸多知识、技能的分享，是全新的以知识和体验为主题的娱乐、成长、社交平台。#[br]EDUMALL梦想天地以服务人们塑造更好的自我，营建更好的生活为己任。更好的自我，来自物质的丰足、精神的充实、社交的愉悦。更好的生活，来自对生活细节更为专业的了解、精通与热爱。
+                p 在EDUMALL，你可以开始钻研一门感兴趣已久的知识，跟随行家深入体验，把以往碎片化的积累转化为有系统的学习与练习，很多人其实都是因为在爱好的路上狂奔而成为了行家。加入到新的集体，结识兴趣相投的小伙伴，大家结伴学习，相约出游，相互交流，生活/工作都打开好多有意思的新领域。打破日常不变的行为模式，用富有乐趣的休闲方式替代只有嗑手机、看电影、吃吃吃、买买买的单调生活，例如和朋友一起酿酒、做点心、画油画、练练拳等，让生活和情感都丰富起来。#[br]试着分享自己专长的技能或知识，为自己的个人价值增值。也许你和明星刘涛一样擅长收纳，也许你是非常出色的新媒体编辑，也许你通晓杭州城最地道的美食小馆子……每个人都有自己的两把小刷子，通过分享的方式，以知识换取知识，以分享获得朋友，生活也许会完全不同。
+            ol.nav
+                li #[a(href=viewUrl+"news_article.html") 上一篇 | 无锡重磅，首家知识共享社区梦想天地来了！]
+                li #[a(href=viewUrl+"activity_article2.html") 下一篇 | 无锡梦想天地开展扫黑除恶专项斗争专题学习会]
+block append js

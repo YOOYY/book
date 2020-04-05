@@ -1,0 +1,75 @@
+extends ./share/container.pug
+block config
+    - var title = '主营业务';
+    - var keywords = '主营业务';
+    - var description = '主营业务';
+    - var currentId = 'service';
+    - var mimgUrl = imgUrl+'service/';
+block css
+    link(rel='stylesheet',href=cssUrl + 'service.css')
+block append main
+    #service
+        .banner_container
+            img.responsive(src=mimgUrl+"banner1.jpg", alt="")
+        .navbar
+            ul.nav
+                li 创新综合体的开发、运营与管理
+                li 教育（文化）品牌的集合与运营
+                li.last 延伸服务
+        .container
+            .content
+                p 梦想天地起源于商业与教育、文化领域的跨界联合，
+                p 基于对行业融合创新发展的洞悉，
+                p 以满足人民群众对美好生活的追求和向往为宗旨，
+                p 通过集合、创新、共享的方式，建设和运营创新综合体，
+                p 成为国内政府与商业综合体青睐的文化商业品牌。
+                img.pic(src=mimgUrl+"pic1.png", alt="")
+            .content
+                p 梦想天地通过成人教育集合店、
+                p 青少年学习成长中心、
+                p 学人图书馆等多种商业模式的创新与实践，
+                p 提供高水平的品牌筛选、引流、推广等服务，
+                p 成为市场领先的集合运营商。
+                img.pic(src=mimgUrl+"pic2.png", alt="")
+            div
+                .item.item1.margintop
+                    img(src=mimgUrl+"pic3.png", alt="")
+                    .panel
+                        h3.title 餐 饮
+                        p.des 一个洋溢着文化气息的现代概念图书馆空间，搭配精美的餐饮美食， 致力为都市人休闲、体验、交流打造一个有趣、有料的所在。
+                        .line
+                .item.item2
+                    .panel
+                        h3.title 零 售
+                        p.des 依托丰富的教育产品以及文创产品，与互联网及线下体验相结合，对商品的生产、流通与销售过程进行升级改造，进而重塑业态结构与生态圈，打造融合的零售新模式。
+                        .line
+                    img(src=mimgUrl+"pic4.png", alt="")
+                .item.item1
+                    img(src=mimgUrl+"pic5.png", alt="")
+                    .panel
+                        h3.title 商务服务
+                        p.des 为入驻的商家提供商务信息咨询、市场营销策划、文化交流活动、 会务及展览活动、运营管理支持、信息及广告发布等相关商务服务。
+                        .line
+                .item.item2
+                    .panel
+                        h3.title 会员服务
+                        p.des 梦想天地将为其战略合作伙伴及大型企业机构提供会员服务，成为其vip会员服务中心,进行积分兑换、活动安排、课程定制等服务，同时成为vip会员及其亲属生活进阶、学习成长、社交休闲的重要场所。
+                        .line
+                    img(src=mimgUrl+"pic6.png", alt="")
+                .item.item1
+                    img(src=mimgUrl+"pic7.png", alt="")
+                    .panel
+                        h3.title 公益活动
+                        p.des 梦想天地以提升中国人的精神气质为己任，同时积极投身公益事业，我们还将联合国内知名的公益机构，推陈出新，成为一个城市公益事业的创新窗口和集聚地。
+                        .line
+block append js
+    script.
+        $(function(){
+            $('#service .nav li').click(function(){
+                var index = $(this).index();
+                $(this).addClass('active').siblings().removeClass('active');
+                $('#service .container>div').eq(index).show().siblings().hide();
+                $('#service .responsive').attr('src',"#{mimgUrl}banner"+ (index+1) +".jpg");
+            })
+            $('#service .nav li').eq(0).click();
+        })
