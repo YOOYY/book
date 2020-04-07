@@ -1,0 +1,56 @@
+extends ./share/container.pug
+
+block config
+    - var title = '藏品';
+    - var keywords = '藏品';
+    - var description = '藏品';
+    - var currentId = 'collection';
+    - var pageCss = 'collection';
+    - var headerText = '藏品';
+    -
+        var nlist = [
+                {name:'图书',href:'#'},
+                {name:'手稿',href:'#'},
+                {name:'艺术品',href:'#'},
+                {name:'唱片',href:'#'},
+                {name:'离馆',href:'#'}
+            ];
+    -
+        var list = [
+                {name:'文 学',img:'book1.jpg',href:'#'},
+                {name:'历 史',img:'book2.jpg',href:'#'},
+                {name:'哲 学',img:'book3.jpg',href:'#'},
+                {name:'经 济',img:'book4.jpg',href:'#'},
+                {name:'管 理',img:'book5.jpg',href:'#'},
+                {name:'自然科学',img:'book6.jpg',href:'#'},
+                {name:'教 育',img:'book7.jpg',href:'#'},
+                {name:'创 新',img:'book8.jpg',href:'#'},
+                {name:'文学艺术',img:'book9.jpg',href:'#'},
+            ];
+block append main
+        #main
+            .input
+                input(type="text")
+            #recommend
+                ul.navbar
+                    each nval, nindex in nlist
+                        li(class=(nindex === 0?"active":''))
+                            a(href="#") #{nval.name}
+                    li
+                        a(href="#")
+                            img.next(src=imgUrl+"next.png", alt="")
+                ul.content
+                    each val, index in list
+                        li.item
+                            img(src=imgUrl+val.img, alt="")
+                            h3.name #{val.name}
+
+        include ./share/footer.pug
+        script(src=jsUrl+"jquery.js")
+        script(src=jsUrl+"base.js")
+        script.
+            $(function(){
+                $(".code").click(function(){
+                    console.log('获取验证码');
+                })
+            })

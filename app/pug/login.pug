@@ -1,0 +1,32 @@
+extends ./share/head.pug
+
+block config
+    - var title = '登录';
+    - var keywords = '登录';
+    - var description = '登录';
+    - var currentId = 'login';
+    - var pageCss = 'login';
+block append body
+    body
+        img.responsive(src=imgUrl+"banner2.png")
+        img.logo(src=imgUrl+"logo.png")
+        #main
+            form(action="#" method="post")
+                .item
+                    i.i_phone
+                    input.select(placeholder='输入手机号')
+                .item
+                    i.i_msg
+                    input.select(placeholder='短信验证码')
+                    .code 获取验证码
+                input#submit(type="submit")
+
+
+        script(src=jsUrl+"jquery.js")
+        script(src=jsUrl+"base.js")
+        script.
+            $(function(){
+                $(".code").click(function(){
+                    console.log('获取验证码');
+                })
+            })

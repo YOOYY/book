@@ -15,7 +15,7 @@ var gulp = require("gulp"),
 
     imgPath = "./" + rootPath + "/imgs",
     scssPath = "./" + rootPath + "/scss",
-    htmlPath = "./" + rootPath + "/pug/",
+    htmlPath = "./" + rootPath + "/pug",
     jsPath = "./" + rootPath + "/js",
 
     // condition = (process.argv[2] === 'build' ? true : false),

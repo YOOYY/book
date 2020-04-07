@@ -1,0 +1,46 @@
+extends ./share/container.pug
+block config
+    - var title = '图书';
+    - var keywords = '图书';
+    - var description = '图书';
+    - var currentId = 'book';
+    - var pageCss = 'book';
+    - var headerText = '图书';
+    - var type = ['全部','文学','历史','哲学','经济','管理','教育','创新','自然科学'];
+block append main
+        #main
+            .input
+                input(type="text")
+            .titlebar
+                    h2 图书
+                    a.more
+                        img(src=imgUrl+"next.png", alt="")
+            ul.typebar
+                each val, index in type
+                    li #{val}
+            ul.nav
+                li 默认
+                li 借阅量
+                li 评论
+                li.fr 选择图书馆
+                    img(src=imgUrl+"expand.png", alt="")
+            ul.booklist
+                li
+                    img(src=imgUrl+"book16.jpg", alt="")
+                    .panel
+                        .row1 
+                            h2.title 《鉴真东渡图》
+                            .tag.yellow 借閲
+                        .author 鉴真
+                        .time 创作时间:唐代
+                        .des 观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。
+                li
+                    img(src=imgUrl+"book16.jpg", alt="")
+                    .panel
+                        .row1 
+                            h2.title 《鉴真东渡图》
+                            .tag.yellow 借閲
+                        .author 鉴真
+                        .time 创作时间:唐代
+                        .des 观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。
+block append js

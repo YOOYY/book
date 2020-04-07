@@ -1,97 +1,50 @@
-extends ./share/container.pug
+extends ./share/head.pug
+
 block config
     - var title = '首页';
     - var keywords = '首页';
     - var description = '首页';
     - var currentId = 'index';
-    - var mimgUrl = imgUrl+'index/';
+    - var pageCss = 'index';
     -
-        var nlist = [
-                {title:'无锡重磅，首家知识共享社区梦想天地来了！',date:'2020.01.15', href:'news_article.html'}, 
-                {title:'Hello，欢迎来到无锡梦想天地',date:'2020.01.15', href:'activity_article1.html'}, 
-                {title:'无锡梦想天地开展扫黑除恶专项斗争专题学习会',date:'2020.01.15', href:'activity_article2.html'},
-                {title:'在寒冷的冬夜，给爱人和自己煮一杯热红酒',date:'2020.01.15', href:'activity_article3.html'},
-                {title:"不忘初心，Jolpa'餐厅两周年",date:'2020.01.15', href:'activity_article4.html'},
-                {title:"将平淡无奇的一天变成无可替代的回忆",date:'2020.01.15', href:'index.html'},
-                {title:"如果在古代，你的中秋节可能是这样过的",date:'2020.01.15', href:'index.html'},
-                {title:"梦想天地2020业务研讨会",date:'2020.01.15', href:'index.html'}
+        var list = [
+                {name:'且听风呤',img:'book10.jpg',href:'#'},
+                {name:'空响炮',img:'book11.jpg',href:'#'},
+                {name:'弹子袋',img:'book12.jpg',href:'#'},
+                {name:'德国钢琴',img:'book13.jpg',href:'#'},
+                {name:'唐代彩马',img:'book14.jpg',href:'#'},
+                {name:'清代陶笛',img:'book15.jpg',href:'#'},
             ];
-block css
-    link(rel='stylesheet',href=cssUrl + 'index.css')
-    link(rel="stylesheet", href=cssUrl+"edslider.css")
-block append main
-    ul#mySlide
-        li
-            a
-                img.responsive(src=mimgUrl+'banner1.jpg' title='' alt='')
-        li
-            a
-                img.responsive(src=mimgUrl+'banner2.jpg' title='' alt='')
-        li
-            a
-                img.responsive(src=mimgUrl+'banner3.jpg' title='' alt='')
-        li
-            a
-                img.responsive(src=mimgUrl+'banner4.jpg' title='' alt='')
-    #features.container.margintop
-        .features_left
-            a(href=viewUrl+'features.html')
-                img(src=mimgUrl+"feature1.jpg", alt="")
-                .text
-                    h6 EDUMALL
-                    p 共享知识空间，全内容搭载平台，知识买手店
-            a.row_2.first(href='#')
-                img(src=mimgUrl+"feature3.jpg")
-                .text
-                    h6 咖啡
-                    p 咖啡起源知识、使用、花式咖啡拉花
-            a.row_2(href='#')
-                img(src=mimgUrl+"feature4.jpg")
-                .text
-                    h6 简餐
-                    p 通过不同的主食搭配，造就更加营养的简餐
-        .features_right
-            a(href='#')
-                img(src=mimgUrl+"feature2.jpg", alt="")
-                .text
-                    h6 Dream I Lab
-                    p 少儿教育百货店
-            a.last(href='#')
-                img(src=mimgUrl+"feature5.jpg")
-                .text
-                    h6 The Library
-                    p 打造集商务、娱乐、社交与知识分享于一体的新型图书馆
-    #newlist.margintop
-        .container
-            h1 企业资讯
-            ol.list
-                each nval, nindex in nlist
-                    li
-                        a(href=viewUrl+nval.href)
-                            span.list_title #{nval.title}
-                            span.list_date #{nval.date}#[span.visibility 日]
-            a.more(href=viewUrl+"activity.html") 查看更多#[img(src=imgUrl+"more.png", alt="")]
-    #friendlink.container
-        h1 合作品牌
-        table
-            tr
-                td.side
-                    img(src=mimgUrl+"icon1.png", alt="")
-                td
-                    img(src=mimgUrl+"icon2.png", alt="")
-                td
-                    img(src=mimgUrl+"icon3.png", alt="")
-                td.side
-                    img(src=mimgUrl+"icon4.png", alt="")
-            tr
-                td.side
-                    img(src=mimgUrl+"icon5.png", alt="")
-                td
-                    img(src=mimgUrl+"icon6.png", alt="")
-                td
-                    img(src=mimgUrl+"icon7.png", alt="")
-                td.side
-                    img(src=mimgUrl+"icon8.png", alt="")
-block append js
-    script(src=jsUrl+"index.js")
-    script(src=jsUrl+"jquery.edslider.js")
+block append body
+    body
+        #main
+            .input
+                input(type="text")
+            img.responsive(src=imgUrl+"banner.jpg")
+            ul.nav
+                li
+                    a(href="#")
+                        img(src=imgUrl+"scholar.png", alt="")
+                li
+                    a(href="#")
+                        img(src=imgUrl+"collection.png", alt="")
+            #recommend
+                .titlebar
+                    h2 推荐藏品
+                    a.more 更多
+                        img(src=imgUrl+"next.png", alt="")
+                ul.content
+                    each val, index in list
+                        li.item
+                            img(src=imgUrl+val.img, alt="")
+                            h3.name #{val.name} 
+
+        include ./share/footer.pug
+        script(src=jsUrl+"jquery.js")
+        script(src=jsUrl+"base.js")
+        script.
+            $(function(){
+                $(".code").click(function(){
+                    console.log('获取验证码');
+                })
+            })

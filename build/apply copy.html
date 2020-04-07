@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1">
+    <title>学人图书借阅申请</title>
+    <meta name="keywords" content="学人图书借阅申请">
+    <meta name="description" content="学人图书借阅申请">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="./imgs/favicon.ico">
+    <link rel="stylesheet" href="./css/base.css">
+    <script src="./js/remBody.js"></script>
+    <link rel="stylesheet" href="./css/apply.css">
+    <link rel="stylesheet" href="./css/mobiscroll.css">
+    <link rel="stylesheet" href="./css/mobiscroll_date.css">
+  </head>
+  <body>
+    <div id="header">借阅申请<a href="#" onClick="javascript :history.go(-1);"><img src="./imgs/back.png" alt=""></a></div>
+    <div id="main">
+      <form action="#" method="post">
+        <div class="item"><i class="i_logo"></i>
+          <input class="select" placeholder="门店选择" disabled="disabled"><img class="i_select" src="./imgs/i-select.png" alt="">
+          <ul class="select_dropdown">
+            <li data-value="test">测试</li>
+          </ul>
+        </div>
+        <div class="item"><i class="i_logo"></i>
+          <input class="select" id="USER_AGE" placeholder="借阅日期"><img class="i_select" src="./imgs/i-select.png" alt="">
+        </div>
+        <div class="item"><i class="i_logo"></i>
+          <input class="select" placeholder="借阅人">
+        </div>
+        <div class="item"><i class="i_logo"></i>
+          <input class="select" placeholder="手机号">
+        </div>
+        <input id="submit" type="submit">
+      </form>
+    </div>
+    <div id="footer"><a href="./home.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine.png" alt=""></a></div>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/base.js"></script>
+    <script src="js/mobiscroll_date.js"></script>
+    <script src="js/mobiscroll.js"></script>
+    <script>
+      $(function(){
+          $('.item').click(function(){
+              $(this).children(".select_dropdown").fadeToggle(200);
+          })
+          $('.select_dropdown li').click(function(){
+              var data = $(this).data('value');
+              console.log(data);
+              $(this).parent().siblings(".select").val(data);
+          })
+      
+          var currYear = (new Date()).getFullYear();	
+          var opt={};
+          opt.date = {preset : 'date'};
+          opt.datetime = {preset : 'datetime'};
+          opt.time = {preset : 'time'};
+          opt.default = {
+              theme: 'android-ics light', //皮肤样式
+              display: 'modal', //显示方式 
+              mode: 'scroller', //日期选择模式
+              dateFormat: 'yyyy-mm-dd',
+              lang: 'zh',
+              showNow: true,
+              nowText: "今天",
+              startYear: currYear - 50, //开始年份
+              endYear: currYear + 10 //结束年份
+          };
+      
+          $("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+      })
+    </script>
+  </body>
+</html>

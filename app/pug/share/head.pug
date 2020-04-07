@@ -1,5 +1,5 @@
 doctype html
-html(lang=lang)
+html(lang="zh")
     block config
     head
         meta(charset="utf-8")
@@ -11,9 +11,8 @@ html(lang=lang)
         meta(name="format-detection" content="telephone=no")
         link(rel="shortcut icon" href=imgUrl+"favicon.ico")
         link(rel='stylesheet',href=cssUrl + 'base.css')
+        script(src=jsUrl+'remBody.js')
+        if pageCss
+            link(rel='stylesheet',href=cssUrl+pageCss+'.css')
         block css
-        <!--[if lte IE 8]>
-        link(rel='stylesheet',href=cssUrl + 'iehack.css')
-        <![endif]-->
-        script(src=jsUrl+"respond.js")
     block body

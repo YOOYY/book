@@ -1,0 +1,14 @@
+extends ./share/container.pug
+block config
+    - var title = '借阅提交';
+    - var keywords = '借阅提交';
+    - var description = '借阅提交';
+    - var currentId = 'success';
+    - var pageCss = 'success';
+    - var headerText = '借阅提交';
+block append main
+        #main
+            img(src=imgUrl+"success.png", alt="")
+            h2 提交成功
+            .tip 客户会在24小时内审核!
+block append js

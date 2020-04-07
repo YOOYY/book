@@ -1,0 +1,50 @@
+#header {
+  position: relative;
+  z-index: 10; }
+  #header .nav li {
+    width: 14%; }
+  #header .subnav {
+    top: 50px; }
+    #header .subnav li {
+      width: 100%; }
+
+#features .features_left {
+  width: 58%; }
+  #features .features_left .first {
+    margin-right: 1.5%; }
+
+#introduction .top img {
+  margin-left: 1%; }
+
+#introduction .bottom .first {
+  margin-right: 1%; }
+
+#shop .navbar img.last {
+  margin-left: -3px; }
+
+.page {
+  border: none; }
+  .page button {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd; }
+  .page #prePage {
+    border-left: 1px solid #ddd; }
+    .page #prePage img {
+      margin-top: 6px; }
+  .page #nextPage {
+    border-right: 1px solid #ddd; }
+    .page #nextPage img {
+      margin-top: 6px; }
+
+#activity_article .content img {
+  margin-right: 1%; }
+
+#brand .top img {
+  margin-left: 1%; }
+
+#brand .bottom .first {
+  margin-right: 1%; }
+
+@media screen and (max-width: 768px) {
+  #service .nav.nav .last {
+    width: 27% !important; } }

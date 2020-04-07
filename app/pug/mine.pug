@@ -1,0 +1,39 @@
+extends ./share/container.pug
+block config
+    - var title = '个人主页';
+    - var keywords = '个人主页';
+    - var description = '个人主页';
+    - var currentId = 'mine';
+    - var pageCss = 'mine';
+    - var headerText = '个人主页';
+block append main
+        #main
+            .rolebox
+                img(src=imgUrl+"avatar1.jpg", alt="")
+                .des
+                    .row1
+                        .name 鉴真
+                        .tag.green 学人
+                        .tag.yellow 机构
+                    .row2 粉丝 0
+                    .row3 0岁 上海
+            ul
+                li.item
+                    a(href="#")
+                        i.i_logo
+                        span 我的借阅
+                        img(src=imgUrl+"next.png", alt="")
+                li.item
+                        i.i_logo
+                        span 我的关注
+                        img(src=imgUrl+"next.png", alt="")
+                li.item
+                        i.i_logo
+                        span 常见问题
+                        img(src=imgUrl+"next.png", alt="")
+                li.item
+                        i.i_logo
+                        span 客服在线
+                        .tel 021-88987886
+
+block append js
