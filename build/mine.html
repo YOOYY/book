@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/mine.css">
   </head>
   <body>
-    <div id="header">个人主页<a href="#" onClick="javascript :history.go(-1);"><img src="./imgs/back.png" alt=""></a></div>
+    <div id="header">个人主页<a href="#" onclick="javascript: window.history.go(-1);return false;"><img src="./imgs/back.png" alt=""></a></div>
     <div id="main">
       <div class="rolebox"><img src="./imgs/avatar1.jpg" alt="">
         <div class="des">
@@ -29,14 +29,14 @@
       </div>
       <ul>
         <li class="item"><a href="#"><i class="i_logo"></i><span>我的借阅</span><img src="./imgs/next.png" alt=""></a></li>
-        <li class="item"><i class="i_logo"></i><span>我的关注</span><img src="./imgs/next.png" alt=""></li>
-        <li class="item"><i class="i_logo"></i><span>常见问题</span><img src="./imgs/next.png" alt=""></li>
+        <li class="item"><a href="#"><i class="i_logo"></i><span>我的关注</span><img src="./imgs/next.png" alt=""></a></li>
+        <li class="item"><a href="#"><i class="i_logo"></i><span>常见问题</span><img src="./imgs/next.png" alt=""></a></li>
         <li class="item"><i class="i_logo"></i><span>客服在线</span>
           <div class="tel">021-88987886</div>
         </li>
       </ul>
     </div>
-    <div id="footer"><a href="./home.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine.png" alt=""></a></div>
+    <div id="footer"><a href="./index.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine-active.png" alt=""></a></div>
     <script src="./js/jquery.js"></script>
     <script src="./js/base.js"></script>
   </body>

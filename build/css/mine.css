@@ -1,77 +1,59 @@
 #main .rolebox {
-  width: 6.63rem;
+  width: 6.23rem;
   height: 1.26rem;
-  background-color: #ffffff;
   box-shadow: 0rem 0.04rem 0.29rem 0rem rgba(134, 155, 168, 0.24);
   border-radius: 0.1rem;
-  border: solid 0.01rem #dee3ea;
+  border: solid 1px #dee3ea;
   margin: 0 auto;
-  margin-top: 0.5rem;
   padding: 0.42rem 0.2rem;
   font-size: 0.26rem; }
   #main .rolebox img {
     float: left;
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.25rem;
+    height: 1.25rem;
     border-radius: 50%; }
   #main .rolebox .des {
     float: left;
     margin-left: 0.26rem; }
   #main .rolebox .row1 div {
-    float: left; }
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0.1rem; }
   #main .rolebox .name {
-    font-size: .3rem;
+    font-size: 0.3rem;
     font-weight: bold; }
   #main .rolebox .tag {
-    width: 0.6rem;
-    height: 0.3rem;
-    font-size: 0.18rem;
-    border-radius: 20px;
-    color: #fff;
-    padding: 0.1rem 0.12rem;
-    margin-left: 0.08rem;
-    text-align: center; }
-  #main .rolebox .yellow {
-    background-image: linear-gradient(270deg, #e0a10a 4%, #ce9b21 100%), linear-gradient(#ede81b, #ede81b); }
-  #main .rolebox .green {
-    background-image: linear-gradient(270deg, #3dbabc 0%, #1283b9 100%), linear-gradient(#ede81b, #ede81b); }
+    margin-left: 0.08rem; }
   #main .rolebox .row2 {
-    color: #3196d4; }
+    color: #3196d4;
+    margin-bottom: 0.1rem; }
   #main .rolebox .row3 {
     color: #8f99aa; }
 
 #main ul {
-  width: 5.65rem;
-  margin: 1.2rem auto 0 auto; }
+  width: 6.6rem;
+  margin: 0.2rem auto 0 auto;
+  overflow: hidden; }
 
 #main .item {
-  width: 5.42rem;
-  height: 0.52rem;
-  margin: 0 auto;
+  width: 100%;
   border-bottom: 1px solid #c2cad9;
   position: relative;
-  margin-top: 0.3rem; }
+  padding: 0.2rem 0;
+  line-height: 0.4rem; }
+  #main .item a {
+    display: block;
+    overflow: hidden; }
+  #main .item span {
+    float: left;
+    color: #606266;
+    font-size: 0.28rem; }
   #main .item img {
     float: right;
+    padding-top: 0.1rem;
     width: 0.13rem;
     height: 0.23rem; }
   #main .item .tel {
     float: right;
     font-size: 0.26rem;
     color: #cf9b20; }
-
-#main .i_logo {
-  float: left;
-  width: 0.34rem;
-  margin-right: 0.28rem; }
-  #main .i_logo::after {
-    content: '';
-    display: block;
-    height: 0.52rem;
-    background: url("../imgs/i-logo.png") no-repeat;
-    background-size: 0.34rem 0.34rem; }
-
-#main span {
-  float: left;
-  color: #606266;
-  font-size: 0.28rem; }

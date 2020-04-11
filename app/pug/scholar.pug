@@ -8,26 +8,61 @@ block config
     - var headerText = '学人榜';
     -
         var list = [
-            {name:'鉴真',img:'avatar1.jpg',fans:'56',attention:'562',des:'扬州人，佛门领袖，融合佛教各家所长。'},
-            {name:'睢景臣',img:'avatar2.jpg',fans:'56',attention:'562',des:'扬州人，元代著名散曲、杂剧作家。'},
-            {name:'汪曾祺',img:'avatar3.jpg',fans:'56',attention:'562',des:'扬州人，中国当代作家、散文家、戏剧家、京派作家'},
-            {name:'王念孙',img:'avatar4.jpg',fans:'56',attention:'562',des:'扬州人，清朝翰林院庶吉士、工部主事、工部郎中'},
-            {name:'孙云铸',img:'avatar5.jpg',fans:'56',attention:'562',des:'扬州人，近现代教育科研工作者'},
-            {name:'王安国',img:'avatar6.jpg',fans:'56',attention:'562',des:'扬州人，清朝历任广东学政左都御史兼领广东巡抚'},
-            {name:'张子谦',img:'avatar7.jpg',fans:'56',attention:'562',des:'扬州人，近现代教育科研工作者'}
+            {id:1,name:'鉴真',img:'avatar1.jpg',fans:'56',attention:'562',des:'扬州人，佛门领袖，融合佛教各家所长。'},
+            {id:2,name:'睢景臣',img:'avatar2.jpg',fans:'56',attention:'562',des:'扬州人，元代著名散曲、杂剧作家。'},
+            {id:3,name:'汪曾祺',img:'avatar3.jpg',fans:'56',attention:'562',des:'扬州人，中国当代作家、散文家、戏剧家、京派作家'},
+            {id:4,name:'王念孙',img:'avatar4.jpg',fans:'56',attention:'562',des:'扬州人，清朝翰林院庶吉士、工部主事、工部郎中'},
+            {id:5,name:'孙云铸',img:'avatar5.jpg',fans:'56',attention:'562',des:'扬州人，近现代教育科研工作者'},
+            {id:6,name:'王安国',img:'avatar6.jpg',fans:'56',attention:'562',des:'扬州人，清朝历任广东学政左都御史兼领广东巡抚'},
+            {id:7,name:'张子谦',img:'avatar7.jpg',fans:'56',attention:'562',des:'扬州人，近现代教育科研工作者'}
         ];
 block append main
-        #main
+        #main.container
             ul
                 each val, index in list
                     li
                         img(src=imgUrl+val.img, alt="")
                         .des
                             .row1
-                                .name #{val.name}
+                                span.name #{val.name}
                                 .tag.green 学人
-                                .guanzu ＋ 关注
-                            .row2 粉丝  #{val.fans}  |  关注  #{val.attention}
-                            .row3 #{val.des}
-
+                                .guanzu(data-id=val.id) ＋ 关注
+                            .row2 粉丝  #{val.fans}  |  关注 #{val.attention}
+                            .singletext #{val.des}
 block append js
+        script.
+            $(function(){
+                $("#main li").click(function(){
+                    $(this).addClass('active').siblings().removeClass('active');
+                })
+
+                $("#main li .guanzu").click(function(){
+                    var id = $(this).data("id");
+                    console.log('id为'+id+'的用户点了关注');
+                })
+
+                var el = $('#main ul');
+                $(document).scroll(function(){
+                    getlist(el, './js/data_scholar.json', function(data){
+                        var html = '';
+
+                        for (var i = 0; i < data.length; i++) {
+                            var list = data[i];
+                            html += '<li><img src="'+list.img+'" alt="">\
+                                        <div class="des">\
+                                            <div class="row1"><span class="name">'+list.name+'</span>';
+                            for(var j = 0; j< list.tags.length; j++){
+                                html += '<div class="tag green">'+list.tags[j]+'</div>';
+                            }
+
+                            html += '<div class="guanzu">＋ 关注</div>\
+                                            </div>\
+                                            <div class="row2">粉丝  '+list.fans+'  |  关注 '+list.attention+'</div>\
+                                            <div class="singletext">'+list.des+'</div>\
+                                        </div>\
+                                    </li>';
+                        }
+                        el.append(html);
+                    })
+                })
+            })

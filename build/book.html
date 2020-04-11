@@ -14,16 +14,16 @@
     <link rel="stylesheet" href="./css/book.css">
   </head>
   <body>
-    <div id="header">图书<a href="#" onClick="javascript :history.go(-1);"><img src="./imgs/back.png" alt=""></a></div>
-    <div id="main">
-      <div class="input">
+    <div id="header">图书<a href="#" onclick="javascript: window.history.go(-1);return false;"><img src="./imgs/back.png" alt=""></a></div>
+    <div class="container" id="main">
+      <div class="search">
         <input type="text">
       </div>
       <div class="titlebar">
-        <h2>图书</h2><a class="more"><img src="./imgs/next.png" alt=""></a>
+        <h2>图书</h2><img src="./imgs/next.png" alt="">
       </div>
       <ul class="typebar">
-        <li>全部</li>
+        <li class="active">全部</li>
         <li>文学</li>
         <li>历史</li>
         <li>哲学</li>
@@ -33,39 +33,84 @@
         <li>创新</li>
         <li>自然科学</li>
       </ul>
-      <ul class="nav">
-        <li>默认</li>
+      <ul class="nav clearfix">
+        <li class="active">默认</li>
         <li>借阅量</li>
         <li>评论</li>
-        <li class="fr">选择图书馆<img src="./imgs/expand.png" alt=""></li>
+        <li class="fr">选择图书馆<img src="./imgs/expand.png" alt="">
+          <ul class="subnav">
+            <li class="active">图书馆1</li>
+            <li>图书馆2</li>
+          </ul>
+        </li>
       </ul>
       <ul class="booklist">
-        <li><img src="./imgs/book16.jpg" alt="">
-          <div class="panel">
-            <div class="row1"> 
-              <h2 class="title">《鉴真东渡图》</h2>
-              <div class="tag yellow">借閲</div>
-            </div>
-            <div class="author">鉴真</div>
-            <div class="time">创作时间:唐代</div>
-            <div class="des">观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。</div>
-          </div>
-        </li>
-        <li><img src="./imgs/book16.jpg" alt="">
-          <div class="panel">
-            <div class="row1"> 
-              <h2 class="title">《鉴真东渡图》</h2>
-              <div class="tag yellow">借閲</div>
-            </div>
-            <div class="author">鉴真</div>
-            <div class="time">创作时间:唐代</div>
-            <div class="des">观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。</div>
-          </div>
-        </li>
+        <li><a href="#"><img src="./imgs/book16.jpg" alt="">
+            <div class="panel">
+              <div class="row1"> 
+                <h2 class="title">《鉴真东渡图》</h2>
+                <div class="tag">借閲</div>
+              </div>
+              <div class="author">鉴真</div>
+              <div class="time">创作时间:唐代</div>
+              <div class="des">观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。111111111111111111</div>
+            </div></a></li>
+        <li><a href="#"><img src="./imgs/book16.jpg" alt="">
+            <div class="panel">
+              <div class="row1"> 
+                <h2 class="title">《鉴真东渡图》</h2>
+                <div class="tag">借阅</div>
+              </div>
+              <div class="author">鉴真</div>
+              <div class="time">创作时间:唐代</div>
+              <div class="des">观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。</div>
+            </div></a></li>
       </ul>
     </div>
-    <div id="footer"><a href="./home.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine.png" alt=""></a></div>
+    <div id="footer"><a href="./index.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine.png" alt=""></a></div>
     <script src="./js/jquery.js"></script>
     <script src="./js/base.js"></script>
+    <script>
+      $(function(){
+          $(".nav>li").click(function(){
+              if($(this).index() == 3){
+                  $('.subnav').toggle();
+              }else{
+                  updateHtml(this,'./js/data_book.json');
+              }
+          })
+          
+          $(".nav .fr li").click(function(){
+              updateHtml(this,'./js/data_book.json');
+          })
+      
+          $(".typebar li").click(function(){
+              updateHtml(this,'./js/data_book.json');
+          })
+      
+          function updateHtml(that,url){
+              $(that).addClass('active').siblings().removeClass('active');
+                  var el = $('.booklist');
+                  getlist(el, url, function(data){
+                  var html = '';
+      
+                  for (var i = 0; i < data.length; i++) {
+                      var list = data[i];
+                      html += '<li><a href="'+list.href+'"><img src="'+list.img+'">\
+                                  <div class="panel">\
+                                  <div class="row1">\
+                                      <h2 class="title">'+list.name+'</h2>\
+                                      <div class="tag">借阅</div>\
+                                  </div>\
+                                  <div class="author">'+list.author+'</div>\
+                                  <div class="time">'+list.time+'</div>\
+                                  <div class="des">'+list.des+'</div>\
+                                  </div></a></li>';
+                  }
+                  el.html(html);
+              })
+          }
+      })
+    </script>
   </body>
 </html>

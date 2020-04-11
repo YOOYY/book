@@ -16,28 +16,31 @@
     <link rel="stylesheet" href="./css/mobiscroll_date.css">
   </head>
   <body>
-    <div id="header">借阅申请<a href="#" onClick="javascript :history.go(-1);"><img src="./imgs/back.png" alt=""></a></div>
+    <div id="header">借阅申请<a href="#" onclick="javascript: window.history.go(-1);return false;"><img src="./imgs/back.png" alt=""></a></div>
     <div id="main">
-      <form action="#" method="post">
+      <form action="success.html" method="post">
         <div class="item"><i class="i_logo"></i>
-          <input class="select" placeholder="门店选择" disabled="disabled"><img class="i_select" src="./imgs/i-select.png" alt="">
+          <input class="select" placeholder="门店选择" disabled="disabled"><img class="i_select" src="./imgs/i-select.png">
           <ul class="select_dropdown">
-            <li data-value="test">测试</li>
+            <li data-value="test1">测试1</li>
+            <li data-value="test2">测试2</li>
+            <li data-value="test3">测试3</li>
           </ul>
         </div>
         <div class="item"><i class="i_logo"></i>
-          <input class="select" id="USER_AGE" placeholder="借阅日期"><img class="i_select" src="./imgs/i-select.png" alt="">
+          <input class="select" id="time" placeholder="借阅日期" name="time"><img class="i_select" src="./imgs/i-select.png" alt="">
         </div>
         <div class="item"><i class="i_logo"></i>
-          <input class="select" placeholder="借阅人">
+          <input class="select" id="user" placeholder="借阅人" name="user" autocomplete="off">
         </div>
         <div class="item"><i class="i_logo"></i>
-          <input class="select" placeholder="手机号">
+          <input class="select" id="tel" placeholder="手机号" name="tel" autocomplete="off">
         </div>
+        <input class="hidden" id="shop" placeholder="手机号" name="shop">
         <input id="submit" type="submit">
       </form>
     </div>
-    <div id="footer"><a href="./home.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine.png" alt=""></a></div>
+    <div id="footer"><a href="./index.html"><img src="./imgs/home.png" alt=""></a><a href="./mine.html"><img src="./imgs/mine.png" alt=""></a></div>
     <script src="./js/jquery.js"></script>
     <script src="./js/base.js"></script>
     <script src="js/mobiscroll_date.js"></script>
@@ -49,9 +52,23 @@
           })
           $('.select_dropdown li').click(function(){
               var data = $(this).data('value');
-              console.log(data);
-              $(this).parent().siblings(".select").val(data);
+              var label = $(this).text();
+              $(this).parent().siblings(".select").val(label);
+              $("#shop").val(data);
           })
+      
+          $("form").submit(function(e){
+              if(!checkMobile($('#tel').val())){
+                  alert('请填写正确手机号');
+                  return false;
+              }
+              if($('#time').val() && $('#user').val() && $('#tel').val() && $('#shop').val()){
+                  return true;
+              }else{
+                  alert('请填写必要参数');
+                  return false;
+              }
+          });
       
           var currYear = (new Date()).getFullYear();	
           var opt={};
@@ -70,7 +87,7 @@
               endYear: currYear + 10 //结束年份
           };
       
-          $("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+          $("#time").mobiscroll($.extend(opt['date'], opt['default']));
       })
     </script>
   </body>

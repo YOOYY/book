@@ -17,34 +17,44 @@ block config
             ];
 block append body
     body
-        #main
-            .input
+        #main.container
+            .search
                 input(type="text")
             img.responsive(src=imgUrl+"banner.jpg")
             ul.nav
                 li
-                    a(href="#")
+                    a(href="scholar.html")
                         img(src=imgUrl+"scholar.png", alt="")
                 li
-                    a(href="#")
+                    a(href="collection.html")
                         img(src=imgUrl+"collection.png", alt="")
             #recommend
                 .titlebar
                     h2 推荐藏品
-                    a.more 更多
+                    a.more(href="#") 更多
                         img(src=imgUrl+"next.png", alt="")
                 ul.content
                     each val, index in list
                         li.item
-                            img(src=imgUrl+val.img, alt="")
-                            h3.name #{val.name} 
+                            a(href="#")
+                                img(src=imgUrl+val.img, alt="")
+                                h3.name #{val.name} 
 
         include ./share/footer.pug
         script(src=jsUrl+"jquery.js")
         script(src=jsUrl+"base.js")
         script.
             $(function(){
-                $(".code").click(function(){
-                    console.log('获取验证码');
+                var el = $('.content');
+                $(document).scroll(function(){
+                    getlist(el, './js/data_index.json', function(data){
+                        var html = '';
+
+                        for (var i = 0; i < data.length; i++) {
+                            var list = data[i];
+                            html += '<li class="item"><a href="' + list.href + '"><img src="' + list.img + '" alt=""><h3 class="name">' + list.name + '</h3></a></li>';
+                        }
+                        el.append(html);
+                    })
                 })
             })

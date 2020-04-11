@@ -11,23 +11,26 @@ block css
     link(rel="stylesheet" href="./css/mobiscroll_date.css")
 block append main
         #main
-            form(action="#" method="post")
+            form(action="success.html" method="post")
                 .item
                     i.i_logo
                     input.select(placeholder='门店选择' disabled="disabled")
-                    img.i_select(src=imgUrl+"i-select.png", alt="")
+                    img.i_select(src=imgUrl+"i-select.png")
                     ul.select_dropdown
-                        li(data-value="test") 测试
+                        li(data-value="test1") 测试1
+                        li(data-value="test2") 测试2
+                        li(data-value="test3") 测试3
                 .item
                     i.i_logo
-                    input#USER_AGE.select(placeholder='借阅日期')
+                    input#time.select(placeholder='借阅日期' name="time")
                     img.i_select(src=imgUrl+"i-select.png", alt="")
                 .item
                     i.i_logo
-                    input.select(placeholder='借阅人')
+                    input#user.select(placeholder='借阅人' name="user" autocomplete="off")
                 .item
                     i.i_logo
-                    input.select(placeholder='手机号')
+                    input#tel.select(placeholder='手机号' name="tel" autocomplete="off")
+                input#shop.hidden(placeholder='手机号' name="shop")
                 input#submit(type="submit")
 
 block append js
@@ -40,9 +43,23 @@ block append js
             })
             $('.select_dropdown li').click(function(){
                 var data = $(this).data('value');
-                console.log(data);
-                $(this).parent().siblings(".select").val(data);
+                var label = $(this).text();
+                $(this).parent().siblings(".select").val(label);
+                $("#shop").val(data);
             })
+
+            $("form").submit(function(e){
+                if(!checkMobile($('#tel').val())){
+                    alert('请填写正确手机号');
+                    return false;
+                }
+                if($('#time').val() && $('#user').val() && $('#tel').val() && $('#shop').val()){
+                    return true;
+                }else{
+                    alert('请填写必要参数');
+                    return false;
+                }
+            });
 
             var currYear = (new Date()).getFullYear();	
             var opt={};
@@ -61,5 +78,5 @@ block append js
                 endYear: currYear + 10 //结束年份
             };
 
-            $("#USER_AGE").mobiscroll($.extend(opt['date'], opt['default']));
+            $("#time").mobiscroll($.extend(opt['date'], opt['default']));
         })

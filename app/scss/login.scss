@@ -10,75 +10,21 @@
 
 #main {
 
-    form {
-        width: 5.65rem;
-        margin: 1.2rem auto 0 auto;
-    }
-
-    .item {
-        width: 5.42rem;
-        height: 0.52rem;
-        margin: 0 auto;
-        border-bottom: 1px solid #c2cad9;
-        position: relative;
-        margin-top: 0.3rem;
-    }
-
+    .i_msg,
     .i_phone {
         float: left;
-        width: 0.34rem;
-        margin-right: 0.28rem;
+        width: 0.45rem;
 
         &::after {
             content: '';
             display: block;
-            height: 0.52rem;
-            background: url($imgUrl+'i-phone.png') no-repeat;
-            background-size: 0.34rem 0.34rem;
+            height: 0.7rem;
+            background: url($imgUrl+'i-msg.png') no-repeat left center/0.31rem 0.25rem;
         }
     }
 
-    .i_msg {
-        float: left;
-        width: 0.34rem;
-        margin-right: 0.28rem;
-
-        &::after {
-            content: '';
-            display: block;
-            height: 0.52rem;
-            background: url($imgUrl+'i-msg.png') no-repeat;
-            background-size: 0.34rem 0.34rem;
-        }
-    }
-
-    input {
-        float: left;
-        color: #606266;
-        border: none;
-        background: none;
-
-        input::-webkit-input-placeholder {
-            color: #c2cbd9;
-        }
-
-        input::-moz-placeholder {
-            /* Mozilla Firefox 19+ */
-            color: #c2cbd9;
-        }
-
-        input:-moz-placeholder {
-            /* Mozilla Firefox 4 to 18 */
-            color: #c2cbd9;
-        }
-
-        input:-ms-input-placeholder {
-            /* Internet Explorer 10-11 */
-            color: #c2cbd9;
-        }
-
-        font-size: 0.28rem;
-        width: 2.5rem;
+    .i_phone::after {
+        background: url($imgUrl+'i-phone.png') no-repeat left center/0.25rem 0.39rem;
     }
 
     .code {
@@ -95,23 +41,16 @@
         font-size: 0.26rem;
         color: #fff;
         float: right;
-        margin-top: -.2rem;
         text-align: center;
     }
 
-    #submit {
-        width: 5.65rem;
-        height: 0.91rem;
-        background-image: linear-gradient(-90deg,
-                #3196d4 0%,
-                #49add5 70%,
-                #61c3d5 98%),
-            linear-gradient(#cfe1e8,
-                #cfe1e8);
-        box-shadow: 0rem 0.03rem 0.21rem 0rem rgba(53, 146, 208, 0.4);
-        margin-top: 2rem;
-        border-radius: 40px;
-        font-size: 0.34rem;
-        color: #fff;
+    .nav {
+        clear: both;
+        margin-top: 3.17rem;
+        text-align: center;
+
+        a {
+            color: #8f99aa;
+        }
     }
 }

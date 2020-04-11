@@ -3,8 +3,6 @@
 #main {
 
     ul {
-        overflow: hidden;
-
         li {
             width: 6.78rem;
             padding: 0.27rem 0;
@@ -16,69 +14,61 @@
 
             &:first-child {
                 border-top: 1px solid #c0c8d6;
+            }
 
+            &.active {
+                background-color: #f2fafd;
             }
         }
 
         img {
             float: left;
-            width: 1.06rem;
-            height: 1.06rem;
+            width: 1.2rem;
+            height: 1.2rem;
             border-radius: 50%;
         }
 
         .des {
             float: left;
-            width: 5.46rem;
+            width: 5.3rem;
             margin-left: 0.26rem;
         }
 
-        .row1 div {
-            float: left;
+        .row1 * {
+            display: inline-block;
+            vertical-align: middle;
+            margin-bottom: 0.1rem;
         }
 
         div.guanzu {
-            width: 1rem;
+            width: 1.2rem;
             height: 0.4rem;
             line-height: 0.4rem;
-            padding: 0 0.2rem;
+            text-align: center;
+            color: #179299;
             background-color: #f8fafa;
             border-radius: 0.08rem;
-            border: solid 0.01rem rgb(25, 140, 146);
+            border: solid 1px #a8d4d8;
             float: right;
         }
 
         .name {
-            font-size: .3rem;
+            font-size: 0.3rem;
             font-weight: bold;
         }
 
         .tag {
-            width: 0.6rem;
-            height: 0.3rem;
-            font-size: 0.18rem;
-            border-radius: 20px;
-            color: #fff;
-            padding: 0.1rem 0.12rem;
-            margin-left: 0.08rem;
-            text-align: center;
-        }
-
-        .green {
-            background-image: linear-gradient(270deg,
-                    #3dbabc 0%,
-                    #1283b9 100%),
-                linear-gradient(#ede81b,
-                    #ede81b);
+            margin-left: 0.11rem;
         }
 
         .row2 {
             clear: both;
             color: #3196d4;
+            margin-bottom: 0.1rem;
         }
 
-        .row3 {
-            color: #8f99aa;
+        .singletext {
+            color: #8d97a7;
             overflow: hidden;
             white-space: nowrap;
             text-overflow: ellipsis;

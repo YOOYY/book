@@ -1,58 +1,23 @@
-#main form {
-  width: 5.65rem;
-  margin: 1.2rem auto 0 auto; }
-
-#main .item {
-  width: 5.42rem;
-  height: 0.52rem;
-  margin: 0 auto;
-  border-bottom: 1px solid #c2cad9;
-  position: relative;
-  margin-top: 0.3rem; }
-
 #main .i_logo {
-  float: left;
-  width: 0.34rem;
-  margin-right: 0.28rem; }
-  #main .i_logo::after {
-    content: '';
-    display: block;
-    height: 0.52rem;
-    background: url("../imgs/i-logo.png") no-repeat;
-    background-size: 0.34rem 0.34rem; }
-
-#main input {
-  float: left;
-  color: #606266;
-  border: none;
-  background: none;
-  font-size: 0.28rem; }
-  #main input input::-webkit-input-placeholder {
-    color: #c2cbd9; }
-  #main input input::-moz-placeholder {
-    /* Mozilla Firefox 19+ */
-    color: #c2cbd9; }
-  #main input input:-moz-placeholder {
-    /* Mozilla Firefox 4 to 18 */
-    color: #c2cbd9; }
-  #main input input:-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    color: #c2cbd9; }
+  margin-top: 0.2rem; }
 
 #main .i_select {
   width: 0.31rem;
   height: 0.19rem;
   float: right;
-  margin-right: 0.3rem; }
+  margin-right: 0.2rem;
+  margin-top: 0.3rem; }
 
 #main .select_dropdown {
   width: 100%;
   position: absolute;
   border: 1px solid #c2cbd9;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
   overflow: hidden;
   top: 100%;
   left: 0;
+  background: #fff;
+  z-index: 1;
   display: none; }
   #main .select_dropdown li {
     width: 100%;
@@ -65,13 +30,10 @@
     #main .select_dropdown li:first-child {
       border: none; }
 
+#main .hidden {
+  width: 0;
+  height: 0;
+  visibility: hidden; }
+
 #main #submit {
-  width: 5.65rem;
-  height: 0.91rem;
-  background-image: linear-gradient(-90deg, #3196d4 0%, #49add5 70%, #61c3d5 98%), linear-gradient(#cfe1e8, #cfe1e8);
-  background-blend-mode: normal, normal;
-  box-shadow: 0rem 0.03rem 0.21rem 0rem rgba(53, 146, 208, 0.4);
-  margin-top: 2rem;
-  border-radius: 40px;
-  font-size: 0.34rem;
-  color: #fff; }
+  margin-top: 1rem; }

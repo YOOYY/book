@@ -57,7 +57,7 @@ gulp.task('scss', () =>
 );
 
 gulp.task('js', () =>
-    gulp.src(jsPath + '/*.js')
+    gulp.src(jsPath + '/*')
     .pipe(gulp.dest(outjsPath))
     .pipe(reload({
         stream: true

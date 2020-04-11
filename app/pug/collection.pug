@@ -13,6 +13,11 @@ block config
                 {name:'手稿',href:'#'},
                 {name:'艺术品',href:'#'},
                 {name:'唱片',href:'#'},
+                {name:'离馆',href:'#'},
+                {name:'图书',href:'#'},
+                {name:'手稿',href:'#'},
+                {name:'艺术品',href:'#'},
+                {name:'唱片',href:'#'},
                 {name:'离馆',href:'#'}
             ];
     -
@@ -28,29 +33,36 @@ block config
                 {name:'文学艺术',img:'book9.jpg',href:'#'},
             ];
 block append main
-        #main
-            .input
+        #main.container
+            .search
                 input(type="text")
             #recommend
                 ul.navbar
                     each nval, nindex in nlist
-                        li(class=(nindex === 0?"active":''))
-                            a(href="#") #{nval.name}
-                    li
-                        a(href="#")
-                            img.next(src=imgUrl+"next.png", alt="")
-                ul.content
-                    each val, index in list
-                        li.item
-                            img(src=imgUrl+val.img, alt="")
-                            h3.name #{val.name}
+                        li(class=(nindex === 0?"active":'')) #{nval.name}
+                .cover
+                    ul.content.active
+                        each val, index in list
+                            li.item
+                                a
+                                    img(src=imgUrl+val.img, alt="")
+                                    h3.name #{val.name}
+                    ul.content
+                        each val, index in list
+                            li.item
+                                a
+                                    img(src=imgUrl+val.img, alt="")
+                                    h3.name #{val.name}2
 
         include ./share/footer.pug
         script(src=jsUrl+"jquery.js")
         script(src=jsUrl+"base.js")
         script.
+            var index = 0;
             $(function(){
-                $(".code").click(function(){
-                    console.log('获取验证码');
+                $(".navbar li").click(function(){
+                    index = $(this).index();
+                    $(this).addClass('active').siblings().removeClass('active');
+                    $('.content').eq(index).addClass('active').siblings().removeClass('active');
                 })
             })

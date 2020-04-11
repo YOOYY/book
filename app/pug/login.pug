@@ -14,13 +14,14 @@ block append body
             form(action="#" method="post")
                 .item
                     i.i_phone
-                    input.select(placeholder='输入手机号')
+                    input#tel.select(placeholder='输入手机号' name="tel")
                 .item
                     i.i_msg
-                    input.select(placeholder='短信验证码')
+                    input#code.select(placeholder='短信验证码' name="code")
                     .code 获取验证码
-                input#submit(type="submit")
-
+                input#submit(type="submit" value="登 录")
+            .nav
+                a(href="#") 登录/#[a(href="#") 注册]
 
         script(src=jsUrl+"jquery.js")
         script(src=jsUrl+"base.js")
@@ -29,4 +30,17 @@ block append body
                 $(".code").click(function(){
                     console.log('获取验证码');
                 })
+
+                $("form").submit(function(e){
+                if(!checkMobile($('#tel').val())){
+                    alert('请填写正确手机号');
+                    return false;
+                }
+                if($('#tel').val() && $('#code').val()){
+                    return true;
+                }else{
+                    alert('请填写必要参数');
+                    return false;
+                }
+            });
             })

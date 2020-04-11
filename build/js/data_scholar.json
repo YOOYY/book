@@ -1,0 +1,28 @@
+{
+    "code": 0,
+    "list": [{
+            "name": "鉴真",
+            "img": "./imgs/avatar1.jpg",
+            "des": "扬州人，佛门领袖，融合佛教各家所长。",
+            "fans": "56",
+            "attention": "562",
+            "tags": ["学者", "名人"]
+        },
+        {
+            "name": "鉴真",
+            "img": "./imgs/avatar1.jpg",
+            "des": "扬州人，佛门领袖，融合佛教各家所长。",
+            "fans": "56",
+            "attention": "562",
+            "tags": ["学者", "名人"]
+        },
+        {
+            "name": "鉴真",
+            "img": "./imgs/avatar1.jpg",
+            "des": "扬州人，佛门领袖，融合佛教各家所长。",
+            "fans": "56",
+            "attention": "562",
+            "tags": ["学者", "名人"]
+        }
+    ]
+}

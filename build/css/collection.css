@@ -1,43 +1,32 @@
 @charset "UTF-8";
+.search::after {
+  content: '请搜索藏品'; }
+
 #main {
-  width: 6.98rem;
+  width: 6.78rem;
   margin: 0.2rem auto 0 auto; }
-  #main .input {
-    position: relative;
-    text-align: center;
-    width: 5.8rem;
-    margin: 0 auto; }
-    #main .input input {
-      display: block;
-      width: 100%;
-      height: 0.62rem;
-      border-radius: 0.3rem;
-      background-color: #fff;
-      box-shadow: 0rem 0.03rem 0.07rem 0rem rgba(153, 183, 201, 0.23);
-      outline: none;
-      border: solid 0.01rem #d9e0ea; }
-    #main .input::after {
-      content: '请搜索藏品';
-      position: absolute;
-      display: block;
-      color: #8f9aaa;
-      width: 2.1rem;
-      height: 0.62rem;
-      padding-left: 0.4rem;
-      left: 1.72rem;
-      top: 0;
-      line-height: 0.62rem;
-      font-size: 0.28rem;
-      background: url("../imgs/search.png") no-repeat left center/0.3rem 0.3rem; }
+  #main #recommend {
+    overflow: hidden; }
   #main .navbar {
-    display: flex;
-    justify-content: space-between;
     border-bottom: solid 0.02rem #dfe3ea;
-    margin: 0.2rem; }
+    margin: 0.36rem 0 0.3rem 0;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    background: linear-gradient(to right, white 20px, transparent), url("../imgs/next_green.png");
+    background-repeat: no-repeat;
+    background-size: 0.2rem 0.3rem, auto 0.3rem;
+    background-position: right center, right center;
+    background-attachment: local, scroll; }
+    #main .navbar::-webkit-scrollbar {
+      display: none; }
     #main .navbar li {
-      font-size: 0.36rem; }
-      #main .navbar li a {
-        color: #8f99aa; }
+      padding: 0 0.22rem;
+      font-size: 0.36rem;
+      color: #8f99aa;
+      text-align: center;
+      display: inline-block;
+      float: none; }
       #main .navbar li .next {
         width: 0.2rem;
         height: 0.3rem;
@@ -48,34 +37,22 @@
         border-bottom: 1px solid #3bb7bc; }
     #main .navbar a {
       display: block; }
-  #main .titlebar {
-    overflow: hidden;
-    margin-bottom: 0.26rem; }
-    #main .titlebar h2 {
-      float: left;
-      color: #342924;
-      font-size: 0.3rem; }
-    #main .titlebar a {
-      float: right;
-      font-size: 0.26rem;
-      color: #afb9c8; }
-    #main .titlebar img {
-      width: 0.12rem;
-      height: 0.19rem;
-      margin-left: 0.1rem;
-      margin-top: 0.1rem; }
   #main .content {
     clear: both;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; }
+    justify-content: space-between;
+    display: none; }
     #main .content .item {
-      width: 2.17rem; }
+      width: 2.06rem;
+      border-radius: 0.05rem; }
       #main .content .item h3 {
-        font-size: 0.26rem;
+        font-size: 0.3rem;
         font-weight: normal;
         color: #66758d;
-        margin: 0.23rem auto 0.35rem auto;
+        margin: 0.25rem auto;
         text-align: center; }
     #main .content img {
       width: 100%; }
+    #main .content.active {
+      display: flex; }
