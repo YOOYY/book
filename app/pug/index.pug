@@ -8,12 +8,12 @@ block config
     - var pageCss = 'index';
     -
         var list = [
-                {name:'且听风呤',img:'book10.jpg',href:'#'},
-                {name:'空响炮',img:'book11.jpg',href:'#'},
-                {name:'弹子袋',img:'book12.jpg',href:'#'},
-                {name:'德国钢琴',img:'book13.jpg',href:'#'},
-                {name:'唐代彩马',img:'book14.jpg',href:'#'},
-                {name:'清代陶笛',img:'book15.jpg',href:'#'},
+                {name:'且听风呤',img:'book10.jpg',href:'./book.html'},
+                {name:'空响炮',img:'book11.jpg',href:'./book.html'},
+                {name:'弹子袋',img:'book12.jpg',href:'./book.html'},
+                {name:'德国钢琴',img:'book13.jpg',href:'./book.html'},
+                {name:'唐代彩马',img:'book14.jpg',href:'./book.html'},
+                {name:'清代陶笛',img:'book15.jpg',href:'./book.html'},
             ];
 block append body
     body
@@ -23,20 +23,20 @@ block append body
             img.responsive(src=imgUrl+"banner.jpg")
             ul.nav
                 li
-                    a(href="scholar.html")
+                    a(href="./scholar.html")
                         img(src=imgUrl+"scholar.png", alt="")
                 li
-                    a(href="collection.html")
+                    a(href="./collection.html")
                         img(src=imgUrl+"collection.png", alt="")
             #recommend
                 .titlebar
                     h2 推荐藏品
-                    a.more(href="#") 更多
+                    a.more(href="./collection.html") 更多
                         img(src=imgUrl+"next.png", alt="")
                 ul.content
                     each val, index in list
                         li.item
-                            a(href="#")
+                            a(href=val.href)
                                 img(src=imgUrl+val.img, alt="")
                                 h3.name #{val.name} 
 

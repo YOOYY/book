@@ -31,6 +31,7 @@
     .typebar {
         display: flex;
         flex-wrap: wrap;
+        justify-content: space-between;
 
         li {
             padding: 0 0.27rem;

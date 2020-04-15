@@ -19,7 +19,8 @@
       margin-top: 0.12rem; }
   #main .typebar {
     display: flex;
-    flex-wrap: wrap; }
+    flex-wrap: wrap;
+    justify-content: space-between; }
     #main .typebar li {
       padding: 0 0.27rem;
       line-height: 0.43rem;

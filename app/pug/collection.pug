@@ -22,15 +22,15 @@ block config
             ];
     -
         var list = [
-                {name:'文 学',img:'book1.jpg',href:'#'},
-                {name:'历 史',img:'book2.jpg',href:'#'},
-                {name:'哲 学',img:'book3.jpg',href:'#'},
-                {name:'经 济',img:'book4.jpg',href:'#'},
-                {name:'管 理',img:'book5.jpg',href:'#'},
-                {name:'自然科学',img:'book6.jpg',href:'#'},
-                {name:'教 育',img:'book7.jpg',href:'#'},
-                {name:'创 新',img:'book8.jpg',href:'#'},
-                {name:'文学艺术',img:'book9.jpg',href:'#'},
+                {name:'文 学',img:'book1.jpg',href:'./book.html?index=2'},
+                {name:'历 史',img:'book2.jpg',href:'./book.html?index=3'},
+                {name:'哲 学',img:'book3.jpg',href:'./book.html?index=4'},
+                {name:'经 济',img:'book4.jpg',href:'./book.html?index=5'},
+                {name:'管 理',img:'book5.jpg',href:'./book.html?index=6'},
+                {name:'自然科学',img:'book6.jpg',href:'./book.html?index=9'},
+                {name:'教 育',img:'book7.jpg',href:'./book.html?index=7'},
+                {name:'创 新',img:'book8.jpg',href:'./book.html?index=8'},
+                {name:'文学艺术',img:'book9.jpg',href:'./book.html'},
             ];
 block append main
         #main.container
@@ -44,7 +44,7 @@ block append main
                     ul.content.active
                         each val, index in list
                             li.item
-                                a
+                                a(href=val.href)
                                     img(src=imgUrl+val.img, alt="")
                                     h3.name #{val.name}
                     ul.content

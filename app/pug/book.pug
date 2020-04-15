@@ -6,7 +6,7 @@ block config
     - var currentId = 'book';
     - var pageCss = 'book';
     - var headerText = '图书';
-    - var type = ['全部','文学','历史','哲学','经济','管理','教育','创新','自然科学'];
+    - var type = ['全部','推荐藏品','文学','历史','哲学','经济','管理','教育','创新','自然科学'];
 block append main
         #main.container
             .search
@@ -16,7 +16,7 @@ block append main
                     img(src=imgUrl+"next.png", alt="")
             ul.typebar
                 each val, index in type
-                    li(class=index === 0?"active":"") #{val}
+                    li(class=index === 1?"active":"") #{val}
             ul.nav.clearfix
                 li.active 默认
                 li 借阅量
@@ -33,7 +33,7 @@ block append main
                         .panel
                             .row1 
                                 h2.title 《鉴真东渡图》
-                                .tag 借閲
+                                a.tag(href="./apply.html") 借阅
                             .author 鉴真
                             .time 创作时间:唐代
                             .des 观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。111111111111111111
@@ -43,7 +43,7 @@ block append main
                         .panel
                             .row1 
                                 h2.title 《鉴真东渡图》
-                                .tag 借阅
+                                a.tag(href="./apply.html") 借阅
                             .author 鉴真
                             .time 创作时间:唐代
                             .des 观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。
@@ -66,6 +66,11 @@ block append js
                     updateHtml(this,'./js/data_book.json');
                 })
 
+                //静态页面展示用代码，动态网站可以删除
+                var index = GetQueryString('index') || 0;
+                $(".typebar li").eq(index).click();
+                //--------------
+                
                 function updateHtml(that,url){
                     $(that).addClass('active').siblings().removeClass('active');
                         var el = $('.booklist');

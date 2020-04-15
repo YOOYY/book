@@ -23,7 +23,8 @@
         <h2>图书</h2><img src="./imgs/next.png" alt="">
       </div>
       <ul class="typebar">
-        <li class="active">全部</li>
+        <li>全部</li>
+        <li class="active">推荐藏品</li>
         <li>文学</li>
         <li>历史</li>
         <li>哲学</li>
@@ -48,8 +49,7 @@
         <li><a href="#"><img src="./imgs/book16.jpg" alt="">
             <div class="panel">
               <div class="row1"> 
-                <h2 class="title">《鉴真东渡图》</h2>
-                <div class="tag">借閲</div>
+                <h2 class="title">《鉴真东渡图》</h2><a class="tag" href="./apply.html">借阅</a>
               </div>
               <div class="author">鉴真</div>
               <div class="time">创作时间:唐代</div>
@@ -58,8 +58,7 @@
         <li><a href="#"><img src="./imgs/book16.jpg" alt="">
             <div class="panel">
               <div class="row1"> 
-                <h2 class="title">《鉴真东渡图》</h2>
-                <div class="tag">借阅</div>
+                <h2 class="title">《鉴真东渡图》</h2><a class="tag" href="./apply.html">借阅</a>
               </div>
               <div class="author">鉴真</div>
               <div class="time">创作时间:唐代</div>
@@ -88,6 +87,11 @@
               updateHtml(this,'./js/data_book.json');
           })
       
+          //静态页面展示用代码，动态网站可以删除
+          var index = GetQueryString('index') || 0;
+          $(".typebar li").eq(index).click();
+          //--------------
+          
           function updateHtml(that,url){
               $(that).addClass('active').siblings().removeClass('active');
                   var el = $('.booklist');
