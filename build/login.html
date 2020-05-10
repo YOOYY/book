@@ -25,14 +25,25 @@
         </div>
         <input id="submit" type="submit" value="登 录">
       </form>
-      <div class="nav"><a href="#">登录/<a href="#">注册</a></a></div>
     </div>
     <script src="./js/jquery.js"></script>
     <script src="./js/base.js"></script>
     <script>
+      var time = 60;
       $(function(){
           $(".code").click(function(){
-              console.log('获取验证码');
+              if(time != 60){
+                  return false;
+              }
+              var timer = setInterval(function(){
+                  $(".code").text('重新获取('+time+'s)')
+                  time--;
+                  if(time<0){
+                      $(".code").text('获取验证码');
+                      clearInterval(timer);
+                      time = 60;
+                  }
+              },1000);
           })
       
           $("form").submit(function(e){

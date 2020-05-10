@@ -2,12 +2,17 @@ var imgUrl = './imgs/',
     bBtn = true;
 
 $(function () {
+    $("#header a").click() {
+
+    }
     $('.search').click(function () {
         $(this).addClass('active');
         $(this).children('input').focus();
     })
     $('.search input').blur(function () {
-        $(this).parent().removeClass('active');
+        if (!$(this).val()) {
+            $(this).parent().removeClass('active');
+        }
     })
     //navigator.userAgent.indexOf用来判断浏览器类型
     var isAndroid = navigator.userAgent.indexOf('Android') > -1 || navigator.userAgent.indexOf('Adr') > -1;

@@ -16,7 +16,7 @@ block append main
                     img(src=imgUrl+"next.png", alt="")
             ul.typebar
                 each val, index in type
-                    li(class=index === 1?"active":"") #{val}
+                    li(class=index === 0?"active":"") #{val}
             ul.nav.clearfix
                 li.active 默认
                 li 借阅量
@@ -36,7 +36,7 @@ block append main
                                 a.tag(href="./apply.html") 借阅
                             .author 鉴真
                             .time 创作时间:唐代
-                            .des 观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。111111111111111111
+                            .des 观众对我们的认可，我非常欣慰，但同时这也是这种遗憾，成为品质的代名观众对我们的认可。
                 li
                     a(href="#")
                         img(src=imgUrl+"book16.jpg", alt="")
@@ -54,43 +54,107 @@ block append js
                     if($(this).index() == 3){
                         $('.subnav').toggle();
                     }else{
-                        updateHtml(this,'./js/data_book.json');
+                    var index = $(this).index();
+                    updateHtml(this,'./js/data_book_2'+index+'.json');
                     }
                 })
                 
                 $(".nav .fr li").click(function(){
-                    updateHtml(this,'./js/data_book.json');
+                    var index = $(this).index();
+                    updateHtml(this,'./js/data_book_1'+(index+1)+'.json');
                 })
 
                 $(".typebar li").click(function(){
-                    updateHtml(this,'./js/data_book.json');
+                    var index = $(this).index();
+                    updateHtml(this,'./js/data_book_'+index+'.json');
                 })
 
                 //静态页面展示用代码，动态网站可以删除
-                var index = GetQueryString('index') || 0;
-                $(".typebar li").eq(index).click();
+                var index = GetQueryString('index');
+                if(index){
+                    $(".typebar li").eq(index).click();
+                }
+
+                $('.search input').blur(function(){
+                    mock(this);
+                })
+
+                $('.search input').bind('keyup', function(event) {
+                　　if (event.keyCode == "13") {
+                　　　　//回车执行查询
+                　　　　mock(this);
+                　　}
+                });
+
+                function mock(_that){
+                    var index = 0;
+                    switch($(_that).val()){
+                        case '':
+                            break;
+                        case '简爱':
+                            index = 2;
+                            break;
+                        case '人类简史':
+                            index = 3;
+                            break;
+                        case '尼采,在世纪的转折点上':
+                            index = 4;
+                            break;
+                        case '巴菲特致股东的信':
+                            index = 5;
+                            break;
+                        case '领导梯队':
+                            index = 6;
+                            break;
+                        case '果壳中的宇宙':
+                            index = 7;
+                            break;
+                        case '奇迹男孩':
+                            index = 8;
+                            break;
+                        case '创新公司':
+                            index = 9;
+                            break;
+                        case '艺术的力量':
+                            index = 10;
+                            break;
+                        default:
+                            index=false;
+                    }
+                    if(index){
+                        $(".typebar li").eq(index).click();
+                    }else{
+                        $('.booklist').empty();
+                    }
+                }
                 //--------------
                 
                 function updateHtml(that,url){
                     $(that).addClass('active').siblings().removeClass('active');
                         var el = $('.booklist');
-                        getlist(el, url, function(data){
-                        var html = '';
+                        $.get(url, function (str) {
+                            // var json = JSON.parse(str);
+                            var json = str;
 
-                        for (var i = 0; i < data.length; i++) {
-                            var list = data[i];
-                            html += '<li><a href="'+list.href+'"><img src="'+list.img+'">\
-                                        <div class="panel">\
-                                        <div class="row1">\
-                                            <h2 class="title">'+list.name+'</h2>\
-                                            <div class="tag">借阅</div>\
-                                        </div>\
-                                        <div class="author">'+list.author+'</div>\
-                                        <div class="time">'+list.time+'</div>\
-                                        <div class="des">'+list.des+'</div>\
-                                        </div></a></li>';
-                        }
-                        el.html(html);
-                    })
+                            if (!json.code) {
+                                bBtn = true;
+                            }
+
+                            var html = '';
+                            for (var i = 0; i < json.list.length; i++) {
+                                var list = json.list[i];
+                                html += '<li><a href="'+list.href+'"><img src="'+list.img+'">\
+                                            <div class="panel">\
+                                            <div class="row1">\
+                                                <h2 class="title">'+list.name+'</h2>\
+                                                <div class="tag">借阅</div>\
+                                            </div>\
+                                            <div class="author">'+list.author+'</div>\
+                                            <div class="time">'+list.time+'</div>\
+                                            <div class="des">'+list.des+'</div>\
+                                            </div></a></li>';
+                            }
+                            el.html(html);
+                        });
                 }
             })

@@ -20,15 +20,25 @@ block append body
                     input#code.select(placeholder='短信验证码' name="code")
                     .code 获取验证码
                 input#submit(type="submit" value="登 录")
-            .nav
-                a(href="#") 登录/#[a(href="#") 注册]
 
         script(src=jsUrl+"jquery.js")
         script(src=jsUrl+"base.js")
         script.
+            var time = 60;
             $(function(){
                 $(".code").click(function(){
-                    console.log('获取验证码');
+                    if(time != 60){
+                        return false;
+                    }
+                    var timer = setInterval(function(){
+                        $(".code").text('重新获取('+time+'s)')
+                        time--;
+                        if(time<0){
+                            $(".code").text('获取验证码');
+                            clearInterval(timer);
+                            time = 60;
+                        }
+                    },1000);
                 })
 
                 $("form").submit(function(e){

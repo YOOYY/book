@@ -30,7 +30,7 @@ block config
                 {name:'自然科学',img:'book6.jpg',href:'./book.html?index=9'},
                 {name:'教 育',img:'book7.jpg',href:'./book.html?index=7'},
                 {name:'创 新',img:'book8.jpg',href:'./book.html?index=8'},
-                {name:'文学艺术',img:'book9.jpg',href:'./book.html'},
+                {name:'文学艺术',img:'book9.jpg',href:'#'},
             ];
 block append main
         #main.container
@@ -53,10 +53,7 @@ block append main
                                 a
                                     img(src=imgUrl+val.img, alt="")
                                     h3.name #{val.name}2
-
-        include ./share/footer.pug
-        script(src=jsUrl+"jquery.js")
-        script(src=jsUrl+"base.js")
+block append js
         script.
             var index = 0;
             $(function(){
@@ -65,4 +62,78 @@ block append main
                     $(this).addClass('active').siblings().removeClass('active');
                     $('.content').eq(index).addClass('active').siblings().removeClass('active');
                 })
+                var list = [
+                    {name:'文 学',img:'book1.jpg',href:'./book.html?index=2'},
+                    {name:'历 史',img:'book2.jpg',href:'./book.html?index=3'},
+                    {name:'哲 学',img:'book3.jpg',href:'./book.html?index=4'},
+                    {name:'经 济',img:'book4.jpg',href:'./book.html?index=5'},
+                    {name:'管 理',img:'book5.jpg',href:'./book.html?index=6'},
+                    {name:'自然科学',img:'book6.jpg',href:'./book.html?index=9'},
+                    {name:'教 育',img:'book7.jpg',href:'./book.html?index=7'},
+                    {name:'创 新',img:'book8.jpg',href:'./book.html?index=8'},
+                    {name:'文学艺术',img:'book9.jpg',href:'#'},
+                ];
+
+                $('.search input').blur(function(){
+                    mock(this);
+                })
+
+                $('.search input').bind('keyup', function(event) {
+                　　if (event.keyCode == "13") {
+                　　　　//回车执行查询
+                　　　　mock(this);
+                　　}
+                });
+
+                function mock(_that){
+                    var index = -1;
+                    switch($(_that).val()){
+                        case '':
+                            break;
+                        case '文学':
+                            index = 0;
+                            break;
+                        case '历史':
+                            index = 1;
+                            break;
+                        case '哲学':
+                            index = 2;
+                            break;
+                        case '经济':
+                            index = 3;
+                            break;
+                        case '管理':
+                            index = 4;
+                            break;
+                        case '自然科学':
+                            index = 5;
+                            break;
+                        case '教育':
+                            index = 6;
+                            break;
+                        case '创新':
+                            index = 7;
+                            break;
+                        case '文学艺术':
+                            index = 8;
+                            break;
+                        default:
+                            index=false;
+                    }
+                    if(index !== false){
+                        if(index === -1){
+                            var html = '';
+                            for(var i = 0;i<list.length;i++){
+                                var val = list[i];
+                                html += '<li class="item"><a href="'+val.href+'"><img src="./imgs/'+val.img+'"><h3 class="name">'+val.name+'</h3></a></li>';
+                            }
+                        }else{
+                            var val = list[index];
+                            html = '<li class="item"><a href="'+val.href+'"><img src="./imgs/'+val.img+'"><h3 class="name">'+val.name+'</h3></a></li>';
+                        }
+                        $('ul.content.active').html(html);
+                    }else{
+                        $('ul.content.active').empty();
+                    }
+                }
             })

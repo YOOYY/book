@@ -8,12 +8,12 @@ block config
     - var pageCss = 'index';
     -
         var list = [
-                {name:'且听风呤',img:'book10.jpg',href:'./book.html'},
-                {name:'空响炮',img:'book11.jpg',href:'./book.html'},
-                {name:'弹子袋',img:'book12.jpg',href:'./book.html'},
-                {name:'德国钢琴',img:'book13.jpg',href:'./book.html'},
-                {name:'唐代彩马',img:'book14.jpg',href:'./book.html'},
-                {name:'清代陶笛',img:'book15.jpg',href:'./book.html'},
+                {name:'且听风呤',img:'book10.jpg',href:'./book.html?index=1'},
+                {name:'空响炮',img:'book11.jpg',href:'./book.html?index=1'},
+                {name:'弹子袋',img:'book12.jpg',href:'./book.html?index=1'},
+                {name:'德国钢琴',img:'book13.jpg',href:'./book.html?index=1'},
+                {name:'唐代彩马',img:'book14.jpg',href:'./book.html?index=1'},
+                {name:'清代陶笛',img:'book15.jpg',href:'./book.html?index=1'},
             ];
 block append body
     body
@@ -57,4 +57,65 @@ block append body
                         el.append(html);
                     })
                 })
+
+                var list = [
+                        {name:'且听风呤',img:'book10.jpg',href:'./book.html?index=1'},
+                        {name:'空响炮',img:'book11.jpg',href:'./book.html?index=1'},
+                        {name:'弹子袋',img:'book12.jpg',href:'./book.html?index=1'},
+                        {name:'德国钢琴',img:'book13.jpg',href:'./book.html?index=1'},
+                        {name:'唐代彩马',img:'book14.jpg',href:'./book.html?index=1'},
+                        {name:'清代陶笛',img:'book15.jpg',href:'./book.html?index=1'},
+                    ];
+                $('.search input').blur(function(){
+                    mock(this);
+                })
+
+                $('.search input').bind('keyup', function(event) {
+                　　if (event.keyCode == "13") {
+                　　　　//回车执行查询
+                　　　　mock(this);
+                　　}
+                });
+                function mock(_that){
+                    var index = -1;
+                    switch($(_that).val()){
+                        case '':
+                            break;
+                        case '且听风呤':
+                            index = 0;
+                            break;
+                        case '空响炮':
+                            index = 1;
+                            break;
+                        case '弹子袋':
+                            index = 2;
+                            break;
+                        case '德国钢琴':
+                            index = 3;
+                            break;
+                        case '唐代彩马':
+                            index = 4;
+                            break;
+                        case '清代陶笛':
+                            index = 5;
+                            break;
+                        default:
+                            index=false;
+                    }
+                    if(index !== false){
+                        if(index === -1){
+                            var html = '';
+                            for(var i = 0;i<list.length;i++){
+                                var val = list[i];
+                                html += '<li class="item"><a href="'+val.href+'"><img src="./imgs/'+val.img+'"><h3 class="name">'+val.name+'</h3></a></li>';
+                            }
+                        }else{
+                            var val = list[index];
+                            html = '<li class="item"><a href="'+val.href+'"><img src="./imgs/'+val.img+'"><h3 class="name">'+val.name+'</h3></a></li>';
+                        }
+                        $('ul.content').html(html);
+                    }else{
+                        $('ul.content').empty();
+                    }
+                }
             })

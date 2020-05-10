@@ -42,6 +42,7 @@ block append js
                     console.log('id为'+id+'的用户点了关注');
                     if($(this).hasClass("active")){
                         $(this).removeClass("active");
+                        $(this).children().attr('src','./imgs/sub.png');
                     }else{
                         $(this).addClass("active");
                         $(this).children().attr('src','./imgs/sub_active.png');

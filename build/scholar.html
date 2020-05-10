@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="./css/scholar.css">
   </head>
   <body>
-    <div id="header">学人榜<a href="#" onclick="javascript: window.history.go(-1);return false;"><img src="./imgs/back.png" alt=""></a></div>
+    <div id="header">学人榜<a href="./index.html" onclick="javascript：history.go(-1);"><img src="./imgs/back.png" alt=""></a></div>
     <div class="container" id="main">
       <ul>
         <li><img class="avatar" src="./imgs/avatar1.jpg" alt="">
@@ -103,6 +103,7 @@
               console.log('id为'+id+'的用户点了关注');
               if($(this).hasClass("active")){
                   $(this).removeClass("active");
+                  $(this).children().attr('src','./imgs/sub.png');
               }else{
                   $(this).addClass("active");
                   $(this).children().attr('src','./imgs/sub_active.png');
