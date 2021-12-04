@@ -7,7 +7,7 @@ var gulp = require("gulp"),
 
     pug = require('gulp-pug'),
 
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     mock = require('./mock.js'),
     ts = require('gulp-typescript'),
 
